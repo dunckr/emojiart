@@ -1,4 +1,3 @@
-/*global require*/
 'use strict';
 
 require.config({
@@ -26,12 +25,15 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
-        handlebars: '../bower_components/handlebars/handlebars'
+        handlebars: '../bower_components/handlebars/handlebars',
+        emoji: '/bower_components/emoji/lib/emoji'
     }
 });
 
 require([
-    'backbone'
-], function (Backbone) {
+    'backbone',
+    'routes/router'
+], function (Backbone, Router) {
+    new Router();
     Backbone.history.start();
 });
