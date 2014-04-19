@@ -11,5 +11,7 @@
     "modernizr": "~2.7.1",
     "handlebars": "~1.3.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "emoji": "~0.3.2"
+  }
 }
