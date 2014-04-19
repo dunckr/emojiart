@@ -1,0 +1,10 @@
+{
+  "generator-backbone": {
+    "appPath": "app",
+    "appName": "Emojiart",
+    "coffee": false,
+    "testFramework": "jasmine",
+    "templateFramework": "handlebars",
+    "compassBootstrap": true
+  }
+}
