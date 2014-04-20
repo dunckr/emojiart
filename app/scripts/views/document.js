@@ -2,8 +2,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates'
-], function ($, _, Backbone, JST) {
+    'templates',
+    'collections/emojis'
+], function ($, _, Backbone, JST, Emojis) {
     'use strict';
 
     var DocumentView = Backbone.View.extend({
@@ -12,14 +13,14 @@ define([
         el: '#documentView',
 
         initialize: function () {
+            this.collection = new Emojis();
             this.render();
         },
 
         render: function () {
-            this.$el.html(this.template);
+            this.$el.html(this.template({ emojis: this.collection.toJSON() }));
             return this;
         }
     });
-
     return DocumentView;
 });

@@ -27,10 +27,11 @@ define([
         },
 
         subViews: function() {
-            new HeaderView();
-            new SidebarView();
             new DocumentView();
-            new FooterView();
+            // new HeaderView();
+            // new SidebarView();
+            // new DocumentView();
+            // new FooterView();
         }
     });
     return AppView;
