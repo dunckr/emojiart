@@ -6,9 +6,8 @@ define([
 
     var Emoji = Backbone.Model.extend({
         defaults: {
-            // value: null
-            value: 'asdfasdf'
-        },
+            value: 'asdfasdf' // ''
+        }
     });
 
     return Emoji;

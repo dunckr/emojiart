@@ -9,8 +9,10 @@ define([
         model: Emoji,
 
         initialize: function() {
-            this.add(new Emoji());
-            this.add(new Emoji({value: 'two'}));
+            var self = this;
+            _(100).times(function(number) {
+                self.add(new Emoji({value: ''+number}));
+            })
         }
     });
 

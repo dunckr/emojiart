@@ -3,8 +3,9 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'collections/emojis'
-], function ($, _, Backbone, JST, Emojis) {
+    'collections/emojis',
+    'views/element'
+], function ($, _, Backbone, JST, Emojis, ElementView) {
     'use strict';
 
     var DocumentView = Backbone.View.extend({
@@ -18,7 +19,12 @@ define([
         },
 
         render: function () {
-            this.$el.html(this.template({ emojis: this.collection.toJSON() }));
+            var self = this;
+            this.$el.html(this.template);
+            this.collection.each(function(emoji) {
+                var elementView = new ElementView({model: emoji});
+                self.$('tbody').append(elementView.render().el);
+            });
             return this;
         }
     });
