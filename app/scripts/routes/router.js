@@ -11,8 +11,7 @@ define([
         },
 
         defaultPath: function() {
-            var view = new AppView();
-            view.render();
+            new AppView();
         }
     });
     return Router;

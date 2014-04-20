@@ -3,8 +3,11 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'views/document'
-], function ($, _, Backbone, JST, DocumentView) {
+    'views/header',
+    'views/sidebar',
+    'views/document',
+    'views/footer'
+], function ($, _, Backbone, JST, HeaderView, SidebarView, DocumentView, FooterView) {
     'use strict';
 
     var AppView = Backbone.View.extend({
@@ -24,7 +27,10 @@ define([
         },
 
         subViews: function() {
+            new HeaderView();
+            new SidebarView();
             new DocumentView();
+            new FooterView();
         }
     });
     return AppView;
