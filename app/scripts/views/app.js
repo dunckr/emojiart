@@ -2,8 +2,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates'
-], function ($, _, Backbone, JST) {
+    'templates',
+    'views/document'
+], function ($, _, Backbone, JST, DocumentView) {
     'use strict';
 
     var AppView = Backbone.View.extend({
@@ -18,8 +19,13 @@ define([
 
         render: function () {
             this.$el.html(this.template);
+            this.subViews();
+            return this;
+        },
+
+        subViews: function() {
+            new DocumentView();
         }
     });
-
     return AppView;
 });

@@ -1,5 +1,3 @@
-/*global define*/
-
 define([
     'jquery',
     'underscore',
@@ -11,20 +9,15 @@ define([
     var DocumentView = Backbone.View.extend({
         template: JST['app/scripts/templates/document.hbs'],
 
-        tagName: 'div',
-
-        id: '',
-
-        className: '',
-
-        events: {},
+        el: '#documentView',
 
         initialize: function () {
-            this.listenTo(this.model, 'change', this.render);
+            this.render();
         },
 
         render: function () {
-            this.$el.html(this.template(this.model.toJSON()));
+            this.$el.html(this.template);
+            return this;
         }
     });
 

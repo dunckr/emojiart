@@ -10,8 +10,9 @@ define([
             '*all': 'defaultPath'
         },
 
-        defaultPath: function(params) {
-            new AppView();
+        defaultPath: function() {
+            var view = new AppView();
+            view.render();
         }
     });
     return Router;

@@ -54,11 +54,11 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/scripts/templates/*.hbs'
                 ],
                 tasks: ['handlebars']
-            },
-            test: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
-                tasks: ['test:true']
             }
+            // test: {
+            //     files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
+            //     tasks: ['test:true']
+            // }
         },
         connect: {
             options: {
@@ -314,7 +314,7 @@ module.exports = function (grunt) {
             'compass:server',
             'connect:livereload',
             'open:server',
-            'watch:livereload'
+            'watch'
         ]);
     });
 
@@ -360,4 +360,10 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
+
+    grunt.registerTask('changed', function() {
+        console.log('******************************************');
+        console.log('***********   CHANGING       *************');
+        console.log('******************************************');
+    });
 };
