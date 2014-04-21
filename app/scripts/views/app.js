@@ -5,9 +5,9 @@ define([
     'templates',
     'views/header',
     'views/sidebar',
-    'views/document',
+    'views/table',
     'views/footer'
-], function ($, _, Backbone, JST, HeaderView, SidebarView, DocumentView, FooterView) {
+], function ($, _, Backbone, JST, HeaderView, SidebarView, TableView, FooterView) {
     'use strict';
 
     var AppView = Backbone.View.extend({
@@ -27,7 +27,8 @@ define([
         },
 
         subViews: function() {
-            new DocumentView();
+            var table = new TableView()
+            this.$('#documentView').append(table.render().$el);
             // new HeaderView();
             // new SidebarView();
             // new DocumentView();

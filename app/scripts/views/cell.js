@@ -6,8 +6,8 @@ define([
 ], function ($, _, Backbone, JST) {
     'use strict';
 
-    var ElementView = Backbone.View.extend({
-        template: JST['app/scripts/templates/element.hbs'],
+    var CellView = Backbone.View.extend({
+        template: JST['app/scripts/templates/cell.hbs'],
 
         tagName: 'td',
 
@@ -19,7 +19,7 @@ define([
         },
 
         initialize: function () {
-            this.listenTo(this.model, 'change', this.render);
+            this.model = new Backbone.Model({value: 'here'});
             this.render();
         },
 
@@ -29,17 +29,19 @@ define([
         },
 
         clicked: function() {
-            this.model.set('value','changed');
+            console.log('clicked');
         },
 
         mousemove: function() {
-            console.log('mousemoving')
+            this.model.set('value','updated');
+            this.render();
+            console.log('mousemove');
         },
 
         mouseup: function() {
-            console.log('mouseup')
+            console.log('mouseup');
         }
     });
 
-    return ElementView;
+    return CellView;
 });
