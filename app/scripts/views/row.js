@@ -3,8 +3,9 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'views/cell'
-], function ($, _, Backbone, JST, CellView) {
+    'views/cell',
+    'models/cell'
+], function ($, _, Backbone, JST, CellView, Cell) {
     'use strict';
 
     var RowView = Backbone.View.extend({
@@ -19,16 +20,16 @@ define([
         render: function () {
             this.$el.html(this.template);
             var self = this;
-            _.times(20, function() {
+            _.times(50, function() {
                 self.addCell();
             });
             return this;
         },
 
         addCell: function() {
-            var cellView = new CellView();
+            var model = new Cell();
+            var cellView = new CellView({ model: model });
             this.$el.append(cellView.render().$el);
-
         }
     });
 

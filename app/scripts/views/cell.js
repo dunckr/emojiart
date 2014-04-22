@@ -2,8 +2,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates'
-], function ($, _, Backbone, JST) {
+    'templates',
+    'services/mouse'
+], function ($, _, Backbone, JST, Mouse) {
     'use strict';
 
     var CellView = Backbone.View.extend({
@@ -12,14 +13,11 @@ define([
         tagName: 'td',
 
         events: {
-            'click': 'clicked',
-            'mousedown': 'mousedown',
-            'mousemove': 'mousemove',
-            'mouseup': 'mouseup'
+            'mousedown': 'update',
+            'mousemove': 'mousemove'
         },
 
         initialize: function () {
-            this.model = new Backbone.Model({value: 'here'});
             this.render();
         },
 
@@ -28,18 +26,14 @@ define([
             return this;
         },
 
-        clicked: function() {
-            console.log('clicked');
+        update: function() {
+            this.$('span').addClass('emoji emoji2600');
         },
 
         mousemove: function() {
-            this.model.set('value','updated');
-            this.render();
-            console.log('mousemove');
-        },
-
-        mouseup: function() {
-            console.log('mouseup');
+            if (Mouse.clicked) {
+                this.update();
+            }
         }
     });
 

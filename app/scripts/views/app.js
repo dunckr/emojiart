@@ -27,7 +27,7 @@ define([
         },
 
         subViews: function() {
-            var table = new TableView()
+            var table = new TableView();
             this.$('#documentView').append(table.render().$el);
             // new HeaderView();
             // new SidebarView();
