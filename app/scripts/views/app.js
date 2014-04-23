@@ -27,10 +27,12 @@ define([
         },
 
         subViews: function() {
-            var table = new TableView();
-            this.$('#documentView').append(table.render().$el);
+
+            var table = new Backbone.Collection();
+            var tableView = new TableView({ collection: table });
+            this.$('#documentView').append(tableView.render().$el);
             // new HeaderView();
-            // new SidebarView();
+            new SidebarView();
             // new DocumentView();
             // new FooterView();
         }

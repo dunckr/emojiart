@@ -20,7 +20,7 @@ define([
         render: function () {
             this.$el.html(this.template);
             var self = this;
-            _.times(50, function() {
+            _.times(10, function() {
                 self.addCell();
             });
             return this;

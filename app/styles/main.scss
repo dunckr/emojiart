@@ -4,11 +4,12 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 // @import '/bower_components/emoji/lib/emoji.css';
 
 table {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
+    // -moz-user-select: none;
+    // -khtml-user-select: none;
+    // -webkit-user-select: none;
+    // -o-user-select: none;
     cursor: crosshair;
+    background-color: red;
 }
 
 .empty {

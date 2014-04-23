@@ -4,8 +4,8 @@ define([
     'backbone',
     'templates',
     'views/row',
-    'services/mouse'
-], function ($, _, Backbone, JST, RowView, Mouse) {
+    'services/control'
+], function ($, _, Backbone, JST, RowView, Control) {
     'use strict';
 
     var TableView = Backbone.View.extend({
@@ -23,7 +23,7 @@ define([
         render: function () {
             this.$el.html(this.template);
             var self = this;
-            _.times(30, function() {
+            _.times(10, function() {
                 self.addRow();
             });
             return this;
@@ -34,8 +34,19 @@ define([
             this.$('tbody').append(rowView.render().$el);
         },
 
-        mouseToggle: function() {
-            Mouse.clickedToggle();
+        mouseToggle: function(e) {
+            if (e.metaKey) {
+                this.altToggle();
+            } else {
+                this.clickedToggle();
+            }
+        },
+
+        clickedToggle: function() {
+            Control.clickedToggle();
+        },
+        altToggle: function() {
+            Control.altToggle();
         }
 
     });

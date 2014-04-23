@@ -3,8 +3,8 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'services/mouse'
-], function ($, _, Backbone, JST, Mouse) {
+    'services/control'
+], function ($, _, Backbone, JST, Control) {
     'use strict';
 
     var CellView = Backbone.View.extend({
@@ -27,11 +27,13 @@ define([
         },
 
         update: function() {
-            this.$('span').addClass('emoji emoji2600');
+            // this.$('span').addClass('emoji emoji1f493');
+            this.$el.html($('<img class="empty emoji emoji1f493" alt="🍻"></img>'));
+            // this.$el.html($('<img class="twitter-emoji" src="https://abs.twimg.com/emoji/v1/72x72/1f37b.png" draggable="false" alt="🍻" title="Clinking beer mugs" aria-label="Emoji: Clinking beer mugs">'));
         },
 
         mousemove: function() {
-            if (Mouse.clicked) {
+            if (Control.clicked && !Control.alt) {
                 this.update();
             }
         }
