@@ -3,8 +3,9 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'services/control'
-], function ($, _, Backbone, JST, Control) {
+    'services/control',
+    'services/emojiLibrary'
+], function ($, _, Backbone, JST, Control, EmojiLibrary) {
     'use strict';
 
     var CellView = Backbone.View.extend({
@@ -13,8 +14,8 @@ define([
         tagName: 'td',
 
         events: {
-            'mousedown': 'update',
-            'mousemove': 'mousemove'
+            'mousedown': 'mouseDown',
+            'mousemove': 'mouseMove'
         },
 
         initialize: function () {
@@ -23,18 +24,24 @@ define([
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
+            EmojiLibrary.run(this.el);
             return this;
         },
 
         update: function() {
-            // this.$('span').addClass('emoji emoji1f493');
-            this.$el.html($('<img class="empty emoji emoji1f493" alt="🍻"></img>'));
-            // this.$el.html($('<img class="twitter-emoji" src="https://abs.twimg.com/emoji/v1/72x72/1f37b.png" draggable="false" alt="🍻" title="Clinking beer mugs" aria-label="Emoji: Clinking beer mugs">'));
+            this.model.set('value',':smiley:');
+            this.render();
         },
 
-        mousemove: function() {
-            if (Control.clicked && !Control.alt) {
+        mouseMove: function() {
+            if (Control.hold && !Control.alt) {
                 this.update();
+            }
+        },
+
+        mouseDown: function(e) {
+            if (e.metaKey) {
+                Control.alt = true;
             }
         }
     });

@@ -11,20 +11,24 @@ define([
     var TableView = Backbone.View.extend({
         template: JST['app/scripts/templates/table.hbs'],
 
+        tagName: 'table',
+
         initialize: function () {
             this.render();
         },
 
         events: {
-            'mousedown': 'mouseToggle',
-            'mouseup': 'mouseToggle'
+            'mousedown': 'mouseDown',
+            'mouseup': 'mouseUp'
         },
 
         render: function () {
             this.$el.html(this.template);
             var self = this;
-            _.times(10, function() {
+            _.times(1, function() {
+            // _.times(25, function() {
                 self.addRow();
+                console.log('add row')
             });
             return this;
         },
@@ -34,19 +38,16 @@ define([
             this.$('tbody').append(rowView.render().$el);
         },
 
-        mouseToggle: function(e) {
+        mouseDown: function(e) {
             if (e.metaKey) {
-                this.altToggle();
-            } else {
-                this.clickedToggle();
+                Control.alt = true;
             }
+            Control.hold = true;
         },
 
-        clickedToggle: function() {
-            Control.clickedToggle();
-        },
-        altToggle: function() {
-            Control.altToggle();
+        mouseUp: function() {
+            Control.alt = false;
+            Control.hold = false;
         }
 
     });

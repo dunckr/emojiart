@@ -167,7 +167,7 @@ module.exports = function (grunt) {
                         'jquery': '../../app/bower_components/jquery/dist/jquery',
                         'underscore': '../../app/bower_components/underscore/underscore',
                         'backbone': '../../app/bower_components/backbone/backbone',
-                        'jEmoji': '../../bower_components/emoji/lib/emoji',
+                        'emojify': '../bower_components/emojify/emojify',
                         'handlebars': '../bower_components/handlebars/handlebars'
                     },
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
@@ -247,8 +247,8 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
                         'styles/fonts/{,*/}*.*',
-                        'bower_components/sass-bootstrap/fonts/*.*',
-                        'bower_components/emoji/lib/*.*'
+                        'bower_components/sass-bootstrap/fonts/*.*'
+                        // 'bower_components/emoji/lib/*.*'
                     ]
                 }]
             }
