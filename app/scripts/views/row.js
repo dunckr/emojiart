@@ -2,9 +2,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/cell',
-    'models/emoji'
-], function ($, _, Backbone, CellView, Emoji) {
+    'views/cell'
+], function ($, _, Backbone, CellView) {
     'use strict';
 
     var RowView = Backbone.View.extend({
@@ -17,17 +16,13 @@ define([
         render: function () {
             this.$el.html();
             var self = this;
-
-            // should be 29 wide
-            _.times(1, function() {
-                console.log('add cell')
-                self.addCell();
+            this.collection.each(function(model) {
+                self.addCell(model);
             });
             return this;
         },
 
-        addCell: function() {
-            var model = new Emoji();
+        addCell: function(model) {
             var cellView = new CellView({ model: model });
             this.$el.append(cellView.render().$el);
         }

@@ -4,8 +4,10 @@ define([
     'backbone',
     'templates',
     'views/row',
+    'collections/emojis',
+    'models/emoji',
     'services/control'
-], function ($, _, Backbone, JST, RowView, Control) {
+], function ($, _, Backbone, JST, RowView, Emojis, Emoji, Control) {
     'use strict';
 
     var TableView = Backbone.View.extend({
@@ -25,16 +27,19 @@ define([
         render: function () {
             this.$el.html(this.template);
             var self = this;
-            _.times(1, function() {
-            // _.times(25, function() {
+            _.times(20, function() {
                 self.addRow();
-                console.log('add row')
             });
             return this;
         },
 
         addRow: function() {
-            var rowView = new RowView();
+            var collection = new Emojis();
+            _.times(20, function() {
+                var model = new Emoji();
+                collection.add(model);
+            });
+            var rowView = new RowView({ collection: collection });
             this.$('tbody').append(rowView.render().$el);
         },
 
