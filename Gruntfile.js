@@ -245,10 +245,10 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
-                        'images/{,*/}*.{webp,gif}',
+                        'images/**',
                         'styles/fonts/{,*/}*.*',
                         'bower_components/sass-bootstrap/fonts/*.*'
-                        // 'bower_components/emoji/lib/*.*'
+                        // 'bower_components/emojify/images/**'
                     ]
                 }]
             }
@@ -348,7 +348,7 @@ module.exports = function (grunt) {
         'compass:dist',
         'useminPrepare',
         'requirejs',
-        'imagemin',
+        // 'imagemin',
         'htmlmin',
         'concat',
         'cssmin',
