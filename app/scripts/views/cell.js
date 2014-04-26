@@ -29,7 +29,7 @@ define([
         },
 
         update: function() {
-            this.model.set('value',':smiley:');
+            this.model.set('value', Control.current.get('value'));
             this.render();
         },
 

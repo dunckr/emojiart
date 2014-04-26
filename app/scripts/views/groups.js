@@ -2,8 +2,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates'
-], function ($, _, Backbone, JST) {
+    'templates',
+    'services/control'
+], function ($, _, Backbone, JST, Control) {
     'use strict';
 
     var GroupsView = Backbone.View.extend({
@@ -12,17 +13,28 @@ define([
         tagName: 'li',
 
         events: {
-            // click title then render the rest
+            'click h2': 'toggleDisplay',
+            'click span': 'changeCurrent'
         },
 
         initialize: function () {
             this.render();
+            console.log(this.title);
         },
 
         render: function () {
-            console.log(this.collection);
-            this.$el.html(this.template(this.collection.toJSON()));
+            this.$el.html(this.template({ collection: this.collection.toJSON(), title: this.title }));
+            return this;
+        },
+
+        toggleDisplay: function() {
+            this.$('.group').toggle();
+        },
+
+        changeCurrent: function(e) {
+            Control.setCurrent(e.target.alt);
         }
+
     });
 
     return GroupsView;
