@@ -29,9 +29,9 @@ define([
         subViews: function() {
             var tableView = new TableView();
             this.$('#documentView').html(tableView.render().$el);
-            // new HeaderView();
+            new HeaderView();
             new SidebarView();
-            // new FooterView();
+            new FooterView();
         }
     });
     return AppView;

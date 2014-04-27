@@ -1,6 +1,14 @@
-<h2>{{title}}</h2>
-<div id="group">
+<div class="panel-heading">
+  <h4 class="panel-title">
+    <a data-toggle="collapse" data-parent="#accordion" href="#{{title}}">
+        <h4>{{title}}</h4>
+    </a>
+  </h4>
+</div>
+<div id="{{title}}" class="panel-collapse collapse in">
+  <div id="group" class="panel-body">
     {{#each collection}}
-        <span>:{{value}}:</span>
+        <span>{{value}}</span>
     {{/each}}
+  </div>
 </div>

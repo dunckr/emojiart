@@ -6,8 +6,9 @@ define([
     'views/row',
     'collections/emojis',
     'models/emoji',
-    'services/control'
-], function ($, _, Backbone, JST, RowView, Emojis, Emoji, Control) {
+    'services/control',
+    'services/eventing'
+], function ($, _, Backbone, JST, RowView, Emojis, Emoji, Control, Eventing) {
     'use strict';
 
     var TableView = Backbone.View.extend({
@@ -17,6 +18,7 @@ define([
 
         initialize: function () {
             this.render();
+            Eventing.bind('reset', this.render, this);
         },
 
         events: {
@@ -34,12 +36,13 @@ define([
         },
 
         addRow: function() {
-            var collection = new Emojis();
+            this.collection = new Emojis();
+            var self = this;
             _.times(20, function() {
                 var model = new Emoji();
-                collection.add(model);
+                self.collection.add(model);
             });
-            var rowView = new RowView({ collection: collection });
+            var rowView = new RowView({ collection: this.collection });
             this.$('tbody').append(rowView.render().$el);
         },
 

@@ -3,27 +3,27 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'services/control'
-], function ($, _, Backbone, JST, Control) {
+    'services/control',
+    'services/emojiLibrary'
+], function ($, _, Backbone, JST, Control, EmojiLibrary) {
     'use strict';
 
     var GroupsView = Backbone.View.extend({
         template: JST['app/scripts/templates/groups.hbs'],
-
-        tagName: 'li',
 
         events: {
             'click h2': 'toggleDisplay',
             'click span': 'changeCurrent'
         },
 
-        initialize: function () {
+        initialize: function (options) {
+            this.title = options.title;
             this.render();
-            console.log(this.title);
         },
 
         render: function () {
             this.$el.html(this.template({ collection: this.collection.toJSON(), title: this.title }));
+            EmojiLibrary.run(this.el);
             return this;
         },
 

@@ -3,11 +3,11 @@ define([
     'underscore',
     'backbone',
     'templates',
+    'bootstrap',
     'services/emojiLibrary',
-    'services/control',
     'views/groups',
     'models/emoji'
-], function ($, _, Backbone, JST, EmojiLibrary, Control, GroupsView, Emoji) {
+], function ($, _, Backbone, JST, bootstrap, EmojiLibrary, GroupsView, Emoji) {
     'use strict';
 
     var SidebarView = Backbone.View.extend({
@@ -19,25 +19,23 @@ define([
             this.render();
         },
 
-        events: {
-            // hide and show the sidebar view
-        },
-
         render: function () {
-            // this.$el.html(this.template({ current: Control.current }));
             this.$el.html(this.template);
 
-            var collection = new Backbone.Collection();
+            var self = this;
 
-            _.each(EmojiLibrary.emojiNames, function(name) {
-                var emoji = new Emoji({ value: name });
-                collection.add(emoji);
+            _.map(EmojiLibrary.groupings, function(list, title) {
+
+                var collection = new Backbone.Collection();
+
+                _.each(list, function(name) {
+                    var emoji = new Emoji({ value: name });
+                    collection.add(emoji);
+                });
+
+                var view = new GroupsView({ collection: collection, title: title });
+                self.$('.groups').append(view.render().$el);
             });
-
-            var li = new GroupsView({ collection: collection, title: 'Library' });
-            this.$('.groups').append(li.render().$el);
-
-            EmojiLibrary.run(this.el);
 
             return this;
         }
