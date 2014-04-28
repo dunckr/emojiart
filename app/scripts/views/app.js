@@ -4,10 +4,11 @@ define([
     'backbone',
     'templates',
     'views/header',
+    'views/groups',
     'views/sidebar',
     'views/table',
     'views/footer'
-], function ($, _, Backbone, JST, HeaderView, SidebarView, TableView, FooterView) {
+], function ($, _, Backbone, JST, HeaderView, GroupsView, SidebarView, TableView, FooterView) {
     'use strict';
 
     var AppView = Backbone.View.extend({
@@ -31,6 +32,7 @@ define([
             this.$('#documentView').html(tableView.render().$el);
             new HeaderView();
             new SidebarView();
+            new GroupsView();
             new FooterView();
         }
     });

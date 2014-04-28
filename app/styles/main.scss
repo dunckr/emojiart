@@ -7,12 +7,24 @@ h1 {
 }
 
 table {
-    cursor: crosshair;
-    width: 100%;
+  cursor: crosshair;
+  width: 100%;
 }
 
 img {
-    width: 20px;
+  width: 20px;
+}
+
+.controls {
+  margin: 10px 10px;
+}
+
+.group-heading {
+  display: inline-block;
+}
+
+.group-icon {
+  margin-top: 15px;
 }
 
 #wrapper {
@@ -24,7 +36,6 @@ img {
   margin-left: -250px;
   left: 250px;
   width: 250px;
-  background: #000;
   position: fixed;
   height: 100%;
   overflow-y: auto;
@@ -87,41 +98,47 @@ img {
   line-height: 65px;
 }
 
-#menu-toggle {
-  display: none;
-}
-
 .inset {
   padding: 20px;
 }
 
-@media (max-width:767px) {
+.loading {
+  margin-top: 30px;
+}
 
-  #wrapper {
-    padding-left: 0;
+.spin {
+  -webkit-animation: spin .5s infinite linear;
+  -moz-animation: spin .5s infinite linear;
+  -o-animation: spin .5s infinite linear;
+  animation: spin .5s infinite linear;
+     -webkit-transform-origin: 50% 58%;
+         transform-origin:50% 58%;
+         -ms-transform-origin:50% 58%;
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
   }
-
-  #sidebar-wrapper {
-    left: 0;
+  to {
+    -moz-transform: rotate(360deg);
   }
+}
 
-  #wrapper.active {
-    position: relative;
-    left: 250px;
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
   }
-
-  #wrapper.active #sidebar-wrapper {
-    left: 250px;
-    width: 250px;
-    transition: all 0.4s ease 0s;
+  to {
+    -webkit-transform: rotate(360deg);
   }
+}
 
-  #menu-toggle {
-    display: inline-block;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-
-  .inset {
-    padding: 15px;
+  to {
+    transform: rotate(360deg);
   }
-
 }

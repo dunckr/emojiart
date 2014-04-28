@@ -6,7 +6,7 @@ define([
     var Control = function() {
         this.hold = false;
         this.alt = false;
-        this.current = new Emoji();
+        this.current = new Emoji({ value: ':smile:' });
     };
     Control.prototype.setCurrent = function(value   ) {
         this.current.set('value', value);

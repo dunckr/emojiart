@@ -29,7 +29,7 @@ define([
         render: function () {
             this.$el.html(this.template);
             var self = this;
-            _.times(20, function() {
+            _.times(30, function() {
                 self.addRow();
             });
             return this;

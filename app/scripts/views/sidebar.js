@@ -5,9 +5,11 @@ define([
     'templates',
     'bootstrap',
     'services/emojiLibrary',
+    'services/eventing',
+    'services/control',
     'views/groups',
     'models/emoji'
-], function ($, _, Backbone, JST, bootstrap, EmojiLibrary, GroupsView, Emoji) {
+], function ($, _, Backbone, JST, bootstrap, EmojiLibrary, Eventing, Control, GroupsView, Emoji) {
     'use strict';
 
     var SidebarView = Backbone.View.extend({
@@ -15,29 +17,28 @@ define([
 
         el: '#sidebarView',
 
-        initialize: function () {
-            this.render();
+        events: {
+            'click #clear': 'reset',
+            'click #eraser': 'eraser'
         },
 
-        render: function () {
-            this.$el.html(this.template);
+        initialize: function () {
+            this.render();
+            Eventing.bind('currentChanged', this.render, this);
+        },
 
-            var self = this;
+        render: function() {
+            this.$el.html(this.template({ current: Control.current.get('value') }));
+            EmojiLibrary.run(this.el);
+        },
 
-            _.map(EmojiLibrary.groupings, function(list, title) {
+        reset: function() {
+            Eventing.trigger('reset');
+        },
 
-                var collection = new Backbone.Collection();
-
-                _.each(list, function(name) {
-                    var emoji = new Emoji({ value: name });
-                    collection.add(emoji);
-                });
-
-                var view = new GroupsView({ collection: collection, title: title });
-                self.$('.groups').append(view.render().$el);
-            });
-
-            return this;
+        eraser: function() {
+            Control.setCurrent(':white_large_square:');
+            this.renderSidebar();
         }
     });
 
