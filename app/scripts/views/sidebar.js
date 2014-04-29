@@ -38,7 +38,7 @@ define([
 
         eraser: function() {
             Control.setCurrent(':white_large_square:');
-            this.renderSidebar();
+            this.render();
         }
     });
 
