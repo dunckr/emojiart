@@ -38,7 +38,7 @@ define([
         addRow: function() {
             this.collection = new Emojis();
             var self = this;
-            _.times(20, function() {
+            _.times(18, function() {
                 var model = new Emoji();
                 self.collection.add(model);
             });

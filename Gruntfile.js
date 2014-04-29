@@ -168,7 +168,8 @@ module.exports = function (grunt) {
                         'underscore': '../../app/bower_components/underscore/underscore',
                         'backbone': '../../app/bower_components/backbone/backbone',
                         'emojify': '../bower_components/emojify/emojify',
-                        'handlebars': '../bower_components/handlebars/handlebars'
+                        'handlebars': '../bower_components/handlebars/handlebars',
+                        'bootstrap': '../bower_components/sass-bootstrap/dist/js/bootstrap'
                     },
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
@@ -247,8 +248,7 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/**',
                         'styles/fonts/{,*/}*.*',
-                        'bower_components/sass-bootstrap/fonts/*.*'
-                        // 'bower_components/emojify/images/**'
+                        'bower_components/sass-bootstrap/fonts/*.*',
                     ]
                 }]
             }
@@ -275,7 +275,7 @@ module.exports = function (grunt) {
                     src: [
                         '<%= yeoman.dist %>/scripts/{,*/}*.js',
                         '<%= yeoman.dist %>/styles/{,*/}*.css',
-                        '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+                        // '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                         '/styles/fonts/{,*/}*.*',
                         'bower_components/sass-bootstrap/fonts/*.*'
                     ]
@@ -363,10 +363,4 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
-
-    grunt.registerTask('changed', function() {
-        console.log('******************************************');
-        console.log('***********   CHANGING       *************');
-        console.log('******************************************');
-    });
 };
