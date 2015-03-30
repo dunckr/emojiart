@@ -1,0 +1,21 @@
+h1 {
+  margin-top: 0;
+}
+.sidebar-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fdfcf9;
+  border-right: 1px solid #f3eee0;
+  overflow: auto;
+  display: none;
+  height: 100%;
+}
+.sidebar-nav {
+  width: 280px;
+  display: block;
+}
+.main-content {
+  width: calc(100% - 280px);
+  margin-left: 280px;
+}
