@@ -1,7 +1,6 @@
 var Backbone = require('backbone'),
   $ = Backbone.$ = require('jquery'),
   Template = require('../templates/group.hbs'),
-  Control = require('../services/control'),
   Eventing = require('../services/eventing');
 
 var GroupView = Backbone.View.extend({
@@ -31,8 +30,7 @@ var GroupView = Backbone.View.extend({
   },
 
   changeCurrent: function(e) {
-    Control.setCurrent($(e.target).text());
-    Eventing.trigger('currentChanged');
+    Eventing.trigger('current:changed', $(e.target).text());
   }
 
 });

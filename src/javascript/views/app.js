@@ -4,7 +4,8 @@ var Backbone = require('backbone'),
   GroupsView = require('../views/groups'),
   SidebarView = require('../views/sidebar'),
   TableView = require('../views/table'),
-  FooterView = require('../views/footer');
+  FooterView = require('../views/footer'),
+  Emoji = require('../models/emoji');
 
 var AppView = Backbone.View.extend({
 
@@ -17,7 +18,10 @@ var AppView = Backbone.View.extend({
   subViews: function() {
     new TableView();
     new HeaderView();
-    new SidebarView();
+    var emoji = new Emoji();
+    new SidebarView({
+      model: emoji
+    });
     new GroupsView();
     new FooterView();
   }

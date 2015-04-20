@@ -3,7 +3,6 @@ var Backbone = require('backbone'),
   Template = require('../templates/sidebar.hbs'),
   HeaderView = require('../views/header'),
   GroupsView = require('../views/groups'),
-  EmojiLibrary = require('../services/emojiLibrary'),
   Eventing = require('../services/eventing'),
   Control = require('../services/control'),
   GroupsView = require('../views/groups');
@@ -20,15 +19,18 @@ var SidebarView = Backbone.View.extend({
   },
 
   initialize: function() {
+    var self = this;
+    Eventing.on('current:changed', function(value) {
+      self.model.set('value', value);
+      self.render();
+    });
     this.render();
-    Eventing.bind('currentChanged', this.render, this);
   },
 
   render: function() {
     this.$el.html(this.template({
-      current: Control.current.get('value')
+      current: this.current
     }));
-    EmojiLibrary.run(this.el);
   },
 
   reset: function() {
