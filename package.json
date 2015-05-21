@@ -1,13 +1,14 @@
 {
   "name": "emojiart",
   "version": "0.0.1",
-  "browser": {
-    "underscore": "backbone/node_modules/underscore"
+  "scripts": {
+    "watch": "gulp"
   },
+  "browser": {},
   "browserify": {
     "transform": [
       "browserify-shim",
-      "coffeeify",
+      "coffee-reactify",
       "hbsfy"
     ]
   },
@@ -44,8 +45,9 @@
     "watchify": "^2.4.0"
   },
   "dependencies": {
-    "backbone": "^1.1.2",
+    "coffee-reactify": "^3.0.0",
     "emojify.js": "^1.0.1",
-    "jquery": "~2.1.0"
+    "normalize-sass": "^1.0.0",
+    "react": "^0.13.3"
   }
 }
