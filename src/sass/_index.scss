@@ -3,21 +3,17 @@ h1 {
 }
 
 .sidebar {
-  /*position: fixed;*/
-  /*top: 0;*/
-  /*left: 0;*/
-  /*background-color: #fdfcf9;*/
-  /*border-right: 1px solid #f3eee0;*/
-  /*overflow: auto;*/
-  /*display: none;*/
-  /*height: 100%;*/
-  width: 280px;
-  display: block;
+  width: 20%;
+  word-break: break-word;
+  font-size: 16px;
+  /*span:hover {*/
+  /*font-size: 30px;*/
+  /*}*/
 }
 
 .main-content {
-  width: calc(100% - 280px);
-  margin-left: 280px;
+  width: 80%;
+  margin-left: 20%;
 }
 
 span {
