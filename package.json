@@ -2,7 +2,8 @@
   "name": "emojiart",
   "version": "0.0.1",
   "scripts": {
-    "watch": "gulp"
+    "watch": "gulp",
+    "karma": "karma start"
   },
   "browser": {},
   "browserify": {
@@ -35,6 +36,12 @@
     "gulp-util": "^3.0.4",
     "handlebars": "^3.0.0",
     "hbsfy": "~2.2.1",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.32",
+    "karma-browserify": "^4.2.1",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-cli": "0.0.4",
+    "karma-jasmine": "^0.3.5",
     "lodash": "^3.3.1",
     "merge-stream": "^0.1.7",
     "node-bourbon": "^4.2.1-beta1",

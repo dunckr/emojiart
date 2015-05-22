@@ -1,5 +1,5 @@
 React = require "react"
-EmojiLibrary = require "../services/emojiLibrary"
+EmojiLibrary = require "../services/emojiLibrary.coffee"
 
 Sidebar = React.createClass
 
@@ -11,7 +11,6 @@ Sidebar = React.createClass
     <span onClick={@handleClick}>{item}</span>
 
   render: ->
-    console.log @props.selected
     emojis = @props.emojis.map(@renderItem)
     <section className="sidebar">
       <h1>Selected: {@props.selected}</h1>
